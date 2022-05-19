@@ -6,31 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="/app.js" defer></script>
   </head>
   <body>
     <section class="main">
       <div class="dummy"></div>
       <div class="container">
-        <div class="circle sign">AC</div>
+        <div id="AC" class="circle sign">AC</div>
         <div class="circle sign">±</div>
-        <div class="circle sign">%</div>
-        <div class="circle orange">÷</div>
-        <div class="circle num">7</div>
-        <div class="circle num">8</div>
-        <div class="circle num">9</div>
-        <div class="circle orange">x</div>
-        <div class="circle num">4</div>
-        <div class="circle num">5</div>
-        <div class="circle num">6</div>
-        <div class="circle orange">-</div>
-        <div class="circle num">1</div>
-        <div class="circle num">2</div>
-        <div class="circle num">3</div>
-        <div class="circle orange">+</div>
-        <div class="circle num expand">0</div>
+        <div id="%" class="circle sign">%</div>
+        <div id="division" class="circle orange">÷</div>
+        <div id="7" class="circle num">7</div>
+        <div id="8" class="circle num">8</div>
+        <div id="9" class="circle num">9</div>
+        <div id="x" class="circle orange">x</div>
+        <div id="4" class="circle num">4</div>
+        <div id="5" class="circle num">5</div>
+        <div id="6" class="circle num">6</div>
+        <div id="-" class="circle orange">-</div>
+        <div id="1" data-value="1" class="circle num">1</div>
+        <div id="2" data-value="2" class="circle num">2</div>
+        <div id="3" class="circle num">3</div>
+        <div id="+" class="circle orange">+</div>
+        <div id="0" class="circle num expand">0</div>
 
-        <div class="circle num">.</div>
-        <div class="circle num">=</div>
+        <div id="." class="circle num">.</div>
+        <div id="=" class="circle num">=</div>
       </div>
     </section>
   </body>
