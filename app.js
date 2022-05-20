@@ -5,6 +5,7 @@
 //AC sıfırlama
 
 const equalBtn = document.getElementById("=");
+
 const addBtn = document.getElementById("+");
 const extractBtn = document.getElementById("-");
 const divideBtn = document.getElementById("division");
@@ -14,19 +15,25 @@ console.log(equalBtn, addBtn, extractBtn, divideBtn, clearBtn, multipleBtn);
 
 const previousNumberElement = document.querySelector("[data-previous-num]");
 const currentNumberElement = document.querySelector("[data-current-num]");
-console.log(currentNumberElement);
+const operatorElement = document.querySelector(".operator");
+console.log(operatorElement);
 
 class Calculator {
-  constructor(prevNumber, curNumber) {
+  constructor(prevNumber, curNumber, curOperation) {
     this.previousNumberElement = prevNumber;
     this.currentNumberElement = curNumber;
+    // this.prevOperatorElement=prevOperation;
+    this.curOperationElement = curOperation;
     this.clearAll();
   }
 
   clearAll() {
     this.currentNumber = "";
     this.previousNumber = "";
+
+    this.curOperationEl = "";
     this.operation = undefined;
+    console;
   }
   delete() {}
 
@@ -46,6 +53,7 @@ class Calculator {
     }
     this.operation = operation;
     this.previousNumber = this.currentNumber;
+    this.curOperationEl = operation;
     this.currentNumber = "";
   }
 
@@ -56,17 +64,34 @@ class Calculator {
     let curNum = parseFloat(this.currentNumber);
     if (isNaN(prevNum) || isNaN(curNum)) return;
 
+    // switch (this.operation) {
+    //   case "+":
+    //     total = prevNum + curNum;
+    //     break;
+    //   case "-":
+    //     total = prevNum - curNum;
+    //     break;
+    //   case "*":
+    //     total = prevNum * curNum;
+    //     break;
+    //   case "÷":
+    //     total = prevNum / curNum;
+    //     break;
+    //   default:
+    //     return;
+    // }
+
     if (this.operation === "+") {
       total = prevNum + curNum;
     } else if (this.operation === "-") {
       total = prevNum - curNum;
-    } else if (this.operation === "*") {
+    } else if (this.operation == "x") {
       total = prevNum * curNum;
-    } else if (this.operation === "÷") {
+    } else if (this.operation == "÷") {
       total = prevNum / curNum;
     } else return;
+    console.log(total, curNum, this.operation);
 
-    console.log(prevNum, curNum, this.operation);
     this.currentNumber = total;
     this.operation = undefined;
     this.previousNumber = "";
@@ -75,17 +100,32 @@ class Calculator {
   updateOperation() {
     this.currentNumberElement.innerText = this.currentNumber;
     this.previousNumberElement.innerText = this.previousNumber;
+    this.curOperationElement.innerText = this.curOperationEl;
   }
 }
 
-const calculator = new Calculator(previousNumberElement, currentNumberElement);
+const calculator = new Calculator(
+  previousNumberElement,
+  currentNumberElement,
+  operatorElement
+);
 
 const allNums = document.querySelectorAll(".num");
+const operationBtns = document.querySelectorAll(".orange");
 
 allNums.forEach((button) => {
   button.addEventListener("click", () => {
     calculator.appendNum(button.innerText);
     calculator.updateOperation();
+  });
+});
+operationBtns.forEach((button) => {
+  button.addEventListener("click", () => {
+    calculator.chooseOperation(button.innerText);
+    calculator.updateOperation();
+    if (previousNumberElement) {
+      operatorElement.style.display = "block";
+    }
   });
 });
 
@@ -109,7 +149,21 @@ multipleBtn.addEventListener("click", (event) => {
 equalBtn.addEventListener("click", (event) => {
   calculator.compute();
   calculator.updateOperation();
+
+  if (previousNumberElement) {
+    operatorElement.style.display = "none";
+  } else if (previousNumberElement) {
+    return (operatorElement.style.display = "block");
+  }
 });
 
-const x = ("1213243" + 33333) / 3;
-console.log(parseInt(x));
+if ((previousNumberElement.innerText = " ")) {
+  operatorElement.style.display = "block";
+} else {
+  operatorElement.style.display = "none";
+}
+console.log(clearBtn);
+
+clearBtn.addEventListener("click", () => {
+  calculator.clearAll();
+});
