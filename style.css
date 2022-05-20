@@ -17,29 +17,32 @@ body{
     background-color: black;
     border-radius: 30px;
     margin:10rem auto ;
-    height:60vh;
+    height:50%;
     width: 25rem;  
-
-
 
 }
 .result{
     display: flex;
     flex-direction: column;
+    gap: 1rem;
     color:white;
     height: 30%;
     text-align: center;
 }
 .current-number{
-    justify-content: flex-end;
+justify-content: flex-end;
 text-align: flex-end;
+margin:0.6rem 1rem;
 height: 50%;
+}
+.previous-number{
+ padding-top: 1rem;
 }
 .container{
     
     display: grid;
     height: 70%;
-    margin: 1rem 0;
+    margin: 2rem;
     grid-template-columns:  repeat(4,5rem);
     grid-template-rows: repeat(5,5rem);   
     justify-content: center;
@@ -59,6 +62,8 @@ height: 50%;
     justify-self: center;
     text-align: center;
     cursor: pointer;
+    opacity: 0.8;
+  transition:0.4s
 }
 .sign{
 background-color: white;
@@ -66,12 +71,31 @@ background-color: white;
 }
 .orange{
     background-color: rgb(221, 121, 34);
+    opacity: 1;
+    transition: 0.1s ease-in-out;
     color: white;
+}
+.orange:hover{
+background-color:rgb(239, 178, 124); ;
 }
 .num{
     background-color: rgba(158, 150, 150, 0.638);
     color: rgba(255, 255, 255, 0.674);
     
+}
+
+.num:hover{
+    opacity: 1;
+    transform: scale(1.09)
+}
+.equalBtn{
+    background-color: rgba(158, 150, 150, 0.638);
+    color: white;
+    opacity: 0.8;
+}
+.equalBtn:hover{
+    opacity: 1;
+    transform: scale(1.09)
 }
 .expand{
  

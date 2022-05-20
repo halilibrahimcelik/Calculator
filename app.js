@@ -16,13 +16,12 @@ console.log(equalBtn, addBtn, extractBtn, divideBtn, clearBtn, multipleBtn);
 const previousNumberElement = document.querySelector("[data-previous-num]");
 const currentNumberElement = document.querySelector("[data-current-num]");
 const operatorElement = document.querySelector(".operator");
-console.log(operatorElement);
 
 class Calculator {
   constructor(prevNumber, curNumber, curOperation) {
     this.previousNumberElement = prevNumber;
     this.currentNumberElement = curNumber;
-    // this.prevOperatorElement=prevOperation;
+
     this.curOperationElement = curOperation;
     this.clearAll();
   }
@@ -33,9 +32,11 @@ class Calculator {
 
     this.curOperationEl = "";
     this.operation = undefined;
-    console;
+
+    if (currentNumberElement.innerText > 0) {
+      return (currentNumberElement.innerText = 0);
+    }
   }
-  delete() {}
 
   //displaying calculation number
   appendNum(number) {
@@ -63,23 +64,6 @@ class Calculator {
     let prevNum = parseFloat(this.previousNumber);
     let curNum = parseFloat(this.currentNumber);
     if (isNaN(prevNum) || isNaN(curNum)) return;
-
-    // switch (this.operation) {
-    //   case "+":
-    //     total = prevNum + curNum;
-    //     break;
-    //   case "-":
-    //     total = prevNum - curNum;
-    //     break;
-    //   case "*":
-    //     total = prevNum * curNum;
-    //     break;
-    //   case "÷":
-    //     total = prevNum / curNum;
-    //     break;
-    //   default:
-    //     return;
-    // }
 
     if (this.operation === "+") {
       total = prevNum + curNum;
